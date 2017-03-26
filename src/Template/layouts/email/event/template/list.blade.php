@@ -1,4 +1,4 @@
-@extends('mcmis:layouts.app')
+@extends('layout::app')
 
 @section('htmlheader_title')
     Email templates
@@ -16,7 +16,7 @@
         <div class="row">
             {{-- Left sidebar --}}
             <div class="col-lg-3">
-                @include('mcmis:layouts.email.event.template.menu')
+                @include('layout::email.event.template.menu')
             </div>
             {{-- End Left sidebar --}}
 
@@ -39,27 +39,10 @@
                         <tbody data-link="row" class="rowlink">
                         @foreach($items as $item)
                             <tr>
-                                <td><a href="{{ action('CMS\EmailTemplateController@edit', ['event' => $item->event_alias]) }}">{!! $item->event->title !!}</a></td>
+                                <td><a href="{{ route('email.event.template.edit', ['event' => $item->event_alias]) }}">{!! $item->event->title !!}</a></td>
                                 <td>{{ str_limit($item->subject, 55, '...') }}</td>
                                 {{--<td>{{ str_limit($item->body, 35, '...') }}</td>--}}
                                 <td>{!! $item->updated_at !!}</td>
-                                <td class="rowlink-skip">
-                                    @if(isset($trashed))
-                                        {{--{!! Form::open(['action' => ['CMS\EmailTemplateController@eliminate', 'shortcode' => $item->shortcode], 'method' => 'delete', 'class' => 'delete-form']) !!}
-                                        <div class="btn-group">--}}
-                                            <a href="{{ action('CMS\EmailTemplateController@restore', ['event' => $item->event_alias]) }}" class="btn btn-warning btn-xs"><i class="glyphicon glyphicon-refresh"> </i> </a>
-                                            {{--{!! Form::submit('Deactivate', ['class' => 'btn btn-danger btn-xs']) !!}
-                                        </div>
-                                        {!! Form::close() !!}--}}
-                                    @else
-                                        {!! Form::open(['action' => ['CMS\EmailTemplateController@destroy', 'event' => $item->event_alias], 'method' => 'delete', 'class' => 'delete-form']) !!}
-                                        <div class="btn-group">
-                                            <a href="{{ action('CMS\EmailTemplateController@edit', ['event' => $item->event_alias]) }}" class="btn btn-warning btn-xs"><i class="glyphicon glyphicon-pencil"> </i> </a>
-                                            {{--{!! Form::submit('Deactivate', ['class' => 'btn btn-danger btn-xs']) !!}--}}
-                                        </div>
-                                        {!! Form::close() !!}
-                                    @endif
-                                </td>
                             </tr>
                         @endforeach
                         </tbody>
@@ -88,11 +71,11 @@
                 cancelButtonText: "No, cancel!",
                 closeOnConfirm: false,
             }).then(
-            function() {
+                function() {
                     $form_obj.submit();
                     swal("Deleting...", "We are processing your request", "info");
 
-            });
+                });
         });
     </script>
 @endsection

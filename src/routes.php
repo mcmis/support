@@ -16,6 +16,8 @@
 $router->group(['namespace' => 'MCMIS\Foundation\Base'], function ($route) {
 
     //routing
-    $route->resource('/cms/email/template', 'Email\Event\Template\Controller');
+    $route->get('/email/templates', ['as' => 'email.event.templates', 'uses' => 'Email\Event\Template\Controller@index']);
+    $route->get('/email/template/{event}/edit', ['as' => 'email.event.template.edit', 'uses' => 'Email\Event\Template\Controller@edit']);
+    $route->put('/email/template/{event}/update', ['as' => 'email.event.template.update', 'uses' => 'Email\Event\Template\Controller@update']);
 
 });

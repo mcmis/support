@@ -39,7 +39,7 @@
                 {{-- Content Body --}}
                 <div class="row">
                     <div class="col-md-12">
-                        {{ Form::model($item, ['action' => ['CMS\EmailTemplateController@update', $item->event_alias ], 'method' => 'put']) }}
+                        {{ Form::model($item, ['route' => ['email.event.template.update', $item->event_alias ], 'method' => 'put']) }}
 
                         @include('layout::email.event.template.form')
 
