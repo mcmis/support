@@ -13,9 +13,8 @@
  * For more details about redistribution and reselling, contact to provided author details.
  */
 
-//Language changer
 Route::group([
     'namespace' => 'MCMIS\Support\Plugins\Localizer\Http', 'middleware' => 'web',
 ], function ($router) {
-    $router->get('/lang/{lang}', 'Operation\LanguageController@change');
+    $router->get('/lang/{lang}', 'Controller@change');
 });
