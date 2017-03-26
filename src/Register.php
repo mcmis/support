@@ -3,6 +3,7 @@
 namespace MCMIS\Support;
 
 use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Routing\Router;
 use MCMIS\Support\Filters\Email\EventTemplate;
 
 class Register
@@ -22,6 +23,8 @@ class Register
         $this->registerFilters();
 
         $this->registerPlugins();
+
+        $this->mapWebRoutes($app->make(Router::class));
     }
 
     protected function registerFilters(){
@@ -38,6 +41,12 @@ class Register
         });
 
         $this->app->bind('MCMIS\Contracts\Filters\EmailTemplate', 'MCMIS\Support\Filters\Email\EventTemplate');
+    }
+
+    protected function mapWebRoutes(Router $router){
+        $router->group(['middleware' => 'web'], function($router){
+            require_once __DIR__.'/routes.php';
+        });
     }
 
 }
