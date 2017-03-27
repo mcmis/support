@@ -22,17 +22,11 @@ class Register
 
         $this->registerFilters();
 
-        $this->registerPlugins();
-
         $this->mapWebRoutes($app->make(Router::class));
     }
 
     protected function registerFilters(){
         $this->filterEmailTemplate();
-    }
-
-    protected function registerPlugins(){
-        (new \MCMIS\Support\Plugins\Localizer\Registrar())->register($this->app);
     }
 
     protected function filterEmailTemplate(){
