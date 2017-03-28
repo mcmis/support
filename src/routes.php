@@ -27,7 +27,7 @@ $router->group(['prefix' => 'template/assets'], function ($route){
         try{
             $file = realpath(__DIR__.'/../../template/src/assets/'.implode('/', array_slice($request->segments(), 2)));
             return response()->make(\Illuminate\Support\Facades\File::get($file))
-                ->header('Content-Type', \Illuminate\Support\Facades\File::type($file));
+                ->header('Content-Type', (\Illuminate\Support\Facades\File::extension($file) == 'css'? 'text/css':'text/javascript'));
         }catch (Exception $e){
             throw new \Symfony\Component\HttpKernel\Exception\NotFoundHttpException('File not found');
         }
