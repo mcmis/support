@@ -11,9 +11,9 @@
     ],
     "require": {
         "php": ">=5.5.9",
-        "mcmis/base" : ">=0.5",
-        "mcmis/plugin-localizer" : ">=0.3",
-        "mcmis/template" : ">=0.5"
+        "mcmis/base" : "0.6.*",
+        "mcmis/plugin-localizer" : "0.5.*",
+        "mcmis/template" : "0.6.*"
     },
     "autoload": {
         "psr-4": {
