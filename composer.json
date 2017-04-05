@@ -13,6 +13,7 @@
         "php": ">=5.5.9",
         "mcmis/base" : "0.6.*",
         "mcmis/plugin-localizer" : "0.5.*",
+        "mcmis/plugin-complainprint" : "0.5.*",
         "mcmis/template" : "0.6.*"
     },
     "autoload": {
